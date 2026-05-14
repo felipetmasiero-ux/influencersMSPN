@@ -25,6 +25,8 @@ async function enviar(produtoId, elemento) {
     // adiciona no clicado
     elemento.classList.add("selecionado")
 
+    const container = document.getElementById("produtos")
+
     container.innerHTML = `
     <div class="skeleton"></div>
     <div class="skeleton"></div>
