@@ -31,7 +31,7 @@ async function enviar(produtoId, elemento) {
     <div class="skeleton"></div>
     `
 
-    await fetch("http://localhost:3000/carrinho", {
+    await fetch("https://influencersmspn.onrender.com/carrinho", {
         method: "POST",
         headers: { 
             "Content-Type": "application/json",
@@ -79,7 +79,7 @@ async function aplicarCupom() {
     }
 
     // pergunta pro backend se o cupom existe
-    const response = await fetch("http://localhost:3000/cupom", {
+    const response =await fetch("https://influencersmspn.onrender.com/cupom", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ codigo: codigoAplicado })
@@ -108,7 +108,7 @@ async function aplicarCupom() {
 
 // Função responsável por atualizar o carrinho toda vez que o usuário adicionar um produto
 async function atualizarCarrinho() {
-    const responseCarrinho = await fetch("http://localhost:3000/carrinho",{
+    const responseCarrinho = await fetch("https://influencersmspn.onrender.com/carrinho", {
         headers: { 
         "Content-Type": "application/json",
         "x-user-id": userId 
@@ -165,7 +165,7 @@ async function atualizarCarrinho() {
     })
 
     try {
-        const response = await fetch("http://localhost:3000/resumo", {
+        const response = await fetch("https://influencersmspn.onrender.com/resumo", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -203,7 +203,7 @@ async function atualizarCarrinho() {
 
 // Função que remove o item do carrinho
 async function removerItem(id) {
-    await fetch(`http://localhost:3000/carrinho/${id}`, {
+   await fetch(`https://influencersmspn.onrender.com/carrinho/${id}`, {
     method: "DELETE",
     headers: { 
                 "Content-Type": "application/json",        
@@ -214,7 +214,7 @@ async function removerItem(id) {
 
 // Função que aumenta a quantidade do item no carrinho quando o botao + é clicado
  async function aumentarQuantidade(id) {
-    await fetch(`http://localhost:3000/carrinho/${id}`, {
+    await fetch(`https://influencersmspn.onrender.com/carrinho/${id}`, {
     method: "PATCH",
     headers: {  
                 "Content-Type": "application/json",
@@ -226,7 +226,7 @@ async function removerItem(id) {
 
 // Função que diminui a quantidade do item no carrinho quando o botao - é clicado
  async function diminuirQuantidade(id) {
-   await fetch(`http://localhost:3000/carrinho/${id}`, {
+   await fetch(`https://influencersmspn.onrender.com/carrinho/${id}`, {
     method: "PATCH",
     headers: {  
                 "Content-Type": "application/json",
@@ -246,7 +246,7 @@ async function finalizarCompra() {
     btn.innerHTML = "Finalizando..."
 
     try {
-        const response = await fetch("http://localhost:3000/finalizar", {
+        const response = await fetch("https://influencersmspn.onrender.com/finalizar", {
             method: "POST",
             headers: { 
                         "Content-Type": "application/json",
@@ -305,7 +305,7 @@ async function finalizarCompra() {
 }
 
 async function carregarProdutos() {
-    const response = await fetch("http://localhost:3000/produtos")
+    const response = await fetch("https://influencersmspn.onrender.com/produtos")
     const produtos = await response.json()
 
     const container = document.getElementById("produtos")
