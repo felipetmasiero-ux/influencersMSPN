@@ -17,12 +17,11 @@ if (ref) {
 carregarProdutos()
 
 async function enviar(produtoId, elemento) {
-    // remove seleção de todos
+
     document.querySelectorAll(".produto").forEach(p => {
         p.classList.remove("selecionado")
     })
 
-    // adiciona no clicado
     elemento.classList.add("selecionado")
 
     const container = document.getElementById("produtos")
@@ -35,12 +34,14 @@ async function enviar(produtoId, elemento) {
 
     await fetch("https://influencersmspn.onrender.com/carrinho", {
         method: "POST",
-        headers: { 
+        headers: {
             "Content-Type": "application/json",
             "x-user-id": userId
-        },        
+        },
         body: JSON.stringify({ id: produtoId })
     })
+
+    await carregarProdutos()
 
     atualizarCarrinho()
 }
@@ -201,10 +202,6 @@ async function atualizarCarrinho() {
         console.error("Erro ao conectar com o backend:", erro)
         totalCarrinho.innerHTML = `<p style="color:red">Erro: ${erro.message}</p>`
     }
-
-    console.log(listaCarrinho)
-console.log(totalCarrinho)
-console.log(resumoCarrinho)
 }
 
 // Função que remove o item do carrinho
