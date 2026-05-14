@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Painel Influencer</title>
+
+    <link rel="stylesheet" href="dashboard.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+
+    <aside class="sidebar">
+        <h1>MAIS PANO</h1>
+
+        <nav>
+            <a href="#cards">Resumo</a>
+            <a href="#">Pedidos</a>
+            <a href="#">Comissão</a>
+            <a href="#graficoArea">Gráficos</a>
+        </nav>
+    </aside>
+
+    <main class="dashboard">
+
+        <h1>Dashboard</h1>
+
+        <header class="topbar">
+
+            <div>
+                <h2>Olá, Influencer 👋</h2>
+                <p id="codigoInfluencer"></p>
+            </div>
+
+            <div class="perfil">
+                <div class="avatar">
+                    F
+                </div>
+            </div>
+
+            <button class="logout-btn" onclick="logout()">
+                Sair
+            </button>
+
+        </header>
+
+        <section class="cards" id="cards">
+
+            <div class="card">
+                <h3>💰 Faturamento</h3>
+                <p id="total">R$ 0</p>
+            </div>
+
+            <div class="card">
+                <h3>📦 Pedidos</h3>
+                <p id="pedidos">0</p>
+            </div>
+
+            <div class="card">
+                <h3>💸 Comissão</h3>
+                <p id="comissao">R$ 0</p>
+            </div>
+
+            <div class="card">
+                <h3>Ticket Médio</h3>
+                <p id="ticketMedio">R$ 0</p>
+            </div>
+
+            <div class="card">
+                <h3>📈 Crescimento</h3>
+                <p id="crescimento">+12%</p>
+            </div>
+
+        </section>
+
+        <section class="grafico-container" id="graficoArea">
+            <canvas id="grafico"></canvas>
+        </section>
+
+        <section class="grafico-container">
+            <canvas id="grafico2"></canvas>
+        </section>
+
+        <section class="pedidos-container">
+
+            <div class="titulo-pedidos">
+                <h2>Últimos Pedidos</h2>
+            </div>
+
+            <table>
+
+                <thead>
+                    <tr>
+                        <th>Cliente</th>
+                        <th>Produto</th>
+                        <th>Valor</th>
+                        <th>Status</th>
+                        <th>Data</th>
+                    </tr>
+                </thead>
+
+                <tbody id="tabelaPedidos">
+
+                </tbody>
+
+            </table>
+
+        </section>
+
+    <section class="tabela-container">
+
+        <h2>🏆 Ranking de Influencers</h2>
+
+        <table>
+
+            <thead>
+
+                <tr>
+                    <th>#</th>
+                    <th>Código</th>
+                    <th>Vendas</th>
+                    <th>Pedidos</th>
+                    <th>Comissão</th>
+                </tr>
+
+            </thead>
+
+            <tbody id="rankingBody">
+
+            </tbody>
+
+        </table>
+
+    </section>
+
+    </main>
+
+<script src="dashboard.js"></script>
+
+</body>
+</html>

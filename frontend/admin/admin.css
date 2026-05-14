@@ -1,0 +1,356 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #0f172a;
+    color: white;
+    font-family: Inter, sans-serif;
+}
+
+.admin {
+    padding: 40px;
+}
+
+.topo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-bottom: 35px;
+}
+
+.topo h1 {
+    font-size: 2rem;
+}
+
+.topo button {
+    background: #8b5cf6;
+    border: none;
+    color: white;
+
+    padding: 14px 20px;
+
+    border-radius: 12px;
+
+    cursor: pointer;
+
+    font-weight: bold;
+}
+
+.tabela-container {
+    background: #111827;
+
+    border-radius: 20px;
+
+    padding: 25px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th {
+    text-align: left;
+
+    color: #94a3b8;
+
+    padding-bottom: 18px;
+}
+
+td {
+    padding: 18px 0;
+
+    border-top: 1px solid rgba(255,255,255,0.05);
+}
+
+td img {
+    width: 70px;
+    border-radius: 12px;
+}
+
+.acoes {
+    display: flex;
+    gap: 10px;
+}
+
+.editar {
+    background: #22c55e;
+}
+
+.excluir {
+    background: #ef4444;
+}
+
+.acoes button {
+    border: none;
+    color: white;
+
+    padding: 10px 14px;
+
+    border-radius: 10px;
+
+    cursor: pointer;
+}
+
+/* MODAL */
+
+.modal {
+    position: fixed;
+
+    inset: 0;
+
+    background: rgba(0,0,0,0.7);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hidden {
+    display: none;
+}
+
+.modal-content {
+    background: #111827;
+
+    padding: 30px;
+
+    border-radius: 20px;
+
+    width: 400px;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 15px;
+}
+
+.modal-content input {
+    padding: 14px;
+
+    border-radius: 10px;
+
+    border: none;
+
+    background: #1e293b;
+
+    color: white;
+}
+
+.modal-content button {
+    background: #8b5cf6;
+
+    border: none;
+
+    color: white;
+
+    padding: 14px;
+
+    border-radius: 12px;
+
+    cursor: pointer;
+}
+
+.cards {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(auto-fit, minmax(220px, 1fr));
+
+    gap: 20px;
+
+    margin-bottom: 30px;
+}
+
+.card {
+
+    background: #111827;
+
+    padding: 25px;
+
+    border-radius: 20px;
+}
+
+.card h3 {
+
+    color: #94a3b8;
+
+    margin-bottom: 12px;
+}
+
+.card p {
+
+    font-size: 2rem;
+
+    font-weight: bold;
+}   
+
+.top-produtos {
+
+    background: #111827;
+
+    padding: 25px;
+
+    border-radius: 20px;
+
+    margin-bottom: 30px;
+}
+
+.top-produtos h2 {
+
+    margin-bottom: 20px;
+}
+
+.produto-top {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    padding: 14px 0;
+
+    border-top:
+        1px solid rgba(255,255,255,0.05);
+}
+
+.produto-top strong {
+
+    font-size: 1.1rem;
+}
+
+.produto-top span {
+
+    color: #8b5cf6;
+
+    font-weight: bold;
+}
+
+.preview {
+
+    width: 100%;
+
+    height: 220px;
+
+    object-fit: cover;
+
+    border-radius: 16px;
+
+    margin-top: 10px;
+}
+
+@media (max-width: 768px) {
+
+    .admin {
+        padding: 20px;
+    }
+
+    .topo {
+        flex-direction: column;
+        gap: 15px;
+        align-items: flex-start;
+    }
+
+    .cards {
+        grid-template-columns: 1fr;
+    }
+
+    .tabela-container {
+        overflow-x: auto;
+    }
+
+    table {
+        min-width: 700px;
+    }
+
+    .modal-content {
+        width: 100%;
+    }
+}
+
+.cards {
+    display: grid;
+
+    grid-template-columns:
+        repeat(auto-fit, minmax(220px, 1fr));
+
+    gap: 20px;
+
+    margin-bottom: 30px;
+}
+
+.card {
+    background: #111827;
+
+    padding: 25px;
+
+    border-radius: 20px;
+}
+
+.card h3 {
+    color: #94a3b8;
+
+    margin-bottom: 10px;
+}
+
+.card p {
+    font-size: 2rem;
+
+    font-weight: bold;
+}
+.top-produtos {
+    margin-top: 30px;
+
+    background: #111827;
+
+    padding: 25px;
+
+    border-radius: 20px;
+}
+
+.produto-top {
+    display: flex;
+
+    justify-content: space-between;
+
+    padding: 14px 0;
+
+    border-bottom:
+        1px solid rgba(255,255,255,0.05);
+}
+
+.toast {
+    position: fixed;
+
+    top: 30px;
+    right: 30px;
+
+    background: #22c55e;
+    color: white;
+
+    padding: 16px 22px;
+
+    border-radius: 14px;
+
+    font-weight: bold;
+
+    transform: translateX(120%);
+
+    transition: 0.3s;
+
+    z-index: 9999;
+}
+
+.toast.erro {
+    background: #ef4444;
+}
+
+.toast.show {
+    transform: translateX(0);
+}

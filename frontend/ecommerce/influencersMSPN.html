@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../toast/toast.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mais pano</title>
+</head>
+<body>
+
+    <header class="header">
+
+        <h1>MAIS PANO</h1>
+
+        <nav>
+            <a href="#">Início</a>
+            <a href="#produtos">Produtos</a>
+            <a href="#">Drops</a>
+        </nav>
+
+    </header>
+
+    <section class="hero">
+
+        <div class="hero-content">
+
+            <p class="tag">
+                STREETWEAR • LIMITED DROP
+            </p>
+
+            <h2>
+                Vista sua identidade.
+            </h2>
+
+            <p class="hero-text">
+                Peças minimalistas para quem vive cultura,
+                criatividade e autenticidade.
+            </p>
+
+            <a href="#produtos">
+                Explorar coleção
+            </a>
+
+        </div>
+
+    </section>
+
+    <main class="container">
+
+        <section class="cupom-box">
+
+            <h3>Use um código de influencer</h3>
+
+            <div class="cupom-area">
+
+                <input
+                    type="text"
+                    id="codigo-digitado"
+                    placeholder="EX: FELIPE10"
+                >
+
+                <button
+                    id="btnCupom"
+                    onclick="aplicarCupom()"
+                >
+                    Aplicar
+                </button>
+
+                <button type="button" id="removercupom" onclick="removerCupom()">
+                    Remover Cupom
+                </button>
+
+            </div>
+
+            <div id="mensagem-cupom"></div>
+
+        </section>
+
+        <section id="produtos" class="produtos-grid">
+
+        </section>
+
+    </main>
+
+    <aside class="carrinho">
+
+        <h2>Seu Carrinho</h2>
+
+        <ul id="lista-carrinho"></ul>
+
+        <div class="total-area">
+
+            <p id="total-carrinho">
+                R$ 0,00
+            </p>
+
+            <button
+                id="btnFinalizar"
+                class="finalizar"
+                onclick="finalizarCompra()"
+            >
+                Finalizar Compra
+            </button>
+
+        </div>
+
+    </aside>
+
+<script src="../toast/toast.js"></script>
+<script src="script.js"></script>
+
+</body>
+</html>
