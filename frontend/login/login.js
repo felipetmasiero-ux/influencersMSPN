@@ -16,7 +16,7 @@ async function login() {
             document.getElementById("senha").value
 
         const response = await fetch(
-            "http://localhost:3000/login",
+            "https://influencersmspn.onrender.com/login",
             {
                 method: "POST",
 

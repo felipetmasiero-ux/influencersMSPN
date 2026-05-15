@@ -21,7 +21,7 @@ if (usuario.role !== "admin") {
 async function carregarProdutos() {
 
     const response = await fetch(
-        "http://localhost:3000/produtos"
+       "https://influencersmspn.onrender.com/produtos"
     )
 
     const produtos = await response.json()
@@ -156,7 +156,7 @@ async function criarProduto() {
             formData.append("imagem", arquivo)
 
             const uploadResponse = await fetch(
-                "http://localhost:3000/upload",
+                "https://influencersmspn.onrender.com/upload",
                 {
                     method: "POST",
 
@@ -182,7 +182,7 @@ async function criarProduto() {
         if (produtoEditando) {
 
             const response = await fetch(
-                `http://localhost:3000/admin/produto/${produtoEditando}`,
+                `https://influencersmspn.onrender.com/admin/produto/${produtoEditando}`,
                 {
                     method: "PUT",
 
@@ -207,7 +207,7 @@ async function criarProduto() {
 
             // CRIAR
             const response = await fetch(
-                "http://localhost:3000/admin/produto",
+                  "https://influencersmspn.onrender.com/admin/produto",
                 {
                     method: "POST",
 
@@ -263,7 +263,7 @@ async function deletarProduto(id) {
     localStorage.getItem("token")
 
     await fetch(
-    `http://localhost:3000/admin/produto/${id}`,
+    `https://influencersmspn.onrender.com/admin/produto/${id}`,
     {
 
         method: "DELETE",
@@ -305,7 +305,7 @@ imagemInput.addEventListener(
 async function carregarAnalytics() {
 
     const response = await fetch(
-        "http://localhost:3000/admin/analytics",
+        "https://influencersmspn.onrender.com/admin/analytics",
         {
             headers: {
                 Authorization: `Bearer ${token}`

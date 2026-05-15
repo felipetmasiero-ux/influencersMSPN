@@ -13,7 +13,7 @@ async function registrar() {
         document.getElementById("codigo").value
 
     const response = await fetch(
-        "http://localhost:3000/registro",
+        "https://influencersmspn.onrender.com/registro",
         {
 
             method: "POST",

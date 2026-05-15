@@ -13,7 +13,7 @@ if (!token || !usuario) {
 async function carregarDashboard() {
 
     const response = await fetch(
-    "http://localhost:3000/influencer",
+   "https://influencersmspn.onrender.com/influencer",
     {
         headers: {
             Authorization: `Bearer ${token}`
@@ -122,7 +122,7 @@ function criarGrafico(dados) {
 async function carregarGrafico() {
 
     const response = await fetch(
-        "http://localhost:3000/grafico",
+        "https://influencersmspn.onrender.com/grafico",
         {
         headers: {
             Authorization: `Bearer ${token}`
@@ -180,7 +180,7 @@ async function carregarGrafico() {
 async function carregarRanking() {
 
     const response = await fetch(
-        "http://localhost:3000/ranking"
+       "https://influencersmspn.onrender.com/ranking"
     )
 
     const ranking = await response.json()
@@ -224,7 +224,7 @@ async function carregarRanking() {
 async function carregarPedidos() {
 
     const response = await fetch(
-    "http://localhost:3000/pedidos",
+    "https://influencersmspn.onrender.com/pedidos",
     {
         headers: {
             Authorization: `Bearer ${token}`
