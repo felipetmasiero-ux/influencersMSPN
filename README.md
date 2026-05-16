@@ -155,29 +155,46 @@ The modular structure also allows future integration of:
 
 ---
 
-## Project Structure
-
-```text
-/frontend
-/backend
-/docs
-```
+## Screenshots
 
 ---
 
-## Screenshots
-
 ## Ecommerce Interface
-(Add screenshot here)
 
-## Influencer Dashboard
-(Add screenshot here)
+<p align="center">
+  <img src="./assests/ecommerce1.png" width="32%" />
+  <img src="./assests/ecommerce2.png" width="32%" />
+  <img src="./assests/ecommerce3.png" width="32%" />
+</p>
 
-## Analytics System
-(Add screenshot here)
+The ecommerce system includes product browsing, shopping cart functionality, persistent cart state, and coupon-based checkout integration.
+
+---
+
+## Influencer Dashboard & Analytics
+
+<p align="center">
+  <img src="./assests/admin.png" width="48%" />
+  <img src="./assests/analytics1.png" width="48%" />
+</p>
+
+<p align="center">
+  <img src="./assests/analytics2.png" width="48%" />
+  <img src="./assests/analytics3.png" width="48%" />
+</p>
+
+The dashboard provides influencer rankings, commission tracking, revenue analytics, order metrics, and interactive data visualizations.
+
+---
 
 ## Authentication System
-(Add screenshot here)
+
+<p align="center">
+  <img src="./assests/login.png" width="48%" />
+  <img src="./assests/registro.png" width="48%" />
+</p>
+
+Authentication is implemented using JWT-based stateless authorization with bcrypt password hashing and protected middleware routes.
 
 ---
 
