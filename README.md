@@ -59,14 +59,38 @@ Backend deployed on Render
 Database hosted on MongoDB Atlas
 
 ## Screenshots
+
 ### Ecommerce
 
+<p align="center">
+  <img src="./screenshots/ecommerce1.png" width="30%">
+  <img src="./screenshots/ecommerce2.png" width="30%">
+  <img src="./screenshots/ecommerce3.png" width="30%">
+</p>
+
+---
 
 ### Influencer Dashboard
-(image)
+
+<p align="center">
+  <img src="./screenshots/admin.png" width="70%">
+</p>
+
+---
 
 ### Analytics
-(image)
+
+<p align="center">
+  <img src="./screenshots/analytics1.png" width="30%">
+  <img src="./screenshots/analytics2.png" width="30%">
+  <img src="./screenshots/analytics3.png" width="30%">
+</p>
+
+---
 
 ### Authentication
-(image)
+
+<p align="center">
+  <img src="./screenshots/login.png" width="45%">
+  <img src="./screenshots/registro.png" width="45%">
+</p>
