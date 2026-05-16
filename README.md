@@ -162,9 +162,9 @@ The modular structure also allows future integration of:
 ## Ecommerce Interface
 
 <p align="center">
-  <img src="./assests/ecommerce1.png" width="32%" />
-  <img src="./assests/ecommerce2.png" width="32%" />
-  <img src="./assests/ecommerce3.png" width="32%" />
+  <img src="./assets/ecommerce1.png" width="32%" />
+  <img src="./assets/ecommerce2.png" width="32%" />
+  <img src="./assets/ecommerce3.png" width="32%" />
 </p>
 
 The ecommerce system includes product browsing, shopping cart functionality, persistent cart state, and coupon-based checkout integration.
@@ -174,13 +174,13 @@ The ecommerce system includes product browsing, shopping cart functionality, per
 ## Influencer Dashboard & Analytics
 
 <p align="center">
-  <img src="./assests/admin.png" width="48%" />
-  <img src="./assests/analytics1.png" width="48%" />
+  <img src="./assets/admin.png" width="48%" />
+  <img src="./assets/analytics1.png" width="48%" />
 </p>
 
 <p align="center">
-  <img src="./assests/analytics2.png" width="48%" />
-  <img src="./assests/analytics3.png" width="48%" />
+  <img src="./assets/analytics2.png" width="48%" />
+  <img src="./assets/analytics3.png" width="48%" />
 </p>
 
 The dashboard provides influencer rankings, commission tracking, revenue analytics, order metrics, and interactive data visualizations.
@@ -190,8 +190,8 @@ The dashboard provides influencer rankings, commission tracking, revenue analyti
 ## Authentication System
 
 <p align="center">
-  <img src="./assests/login.png" width="48%" />
-  <img src="./assests/registro.png" width="48%" />
+  <img src="./assets/login.png" width="48%" />
+  <img src="./assets/registro.png" width="48%" />
 </p>
 
 Authentication is implemented using JWT-based stateless authorization with bcrypt password hashing and protected middleware routes.
