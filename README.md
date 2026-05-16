@@ -1,67 +1,62 @@
-# MSPN Influencer Commerce Platform
-Full-stack influencer-commerce platform built for a real business, integrating ecommerce workflows, coupon attribution, commission tracking, analytics dashboards, and cloud deployment.
+# 🚀 MSPN Influencer Commerce Platform
 
-## Tech Stack
-- Frontend: HTML, CSS, JavaScript                  
-- Backend: Node.js, Express
-- Database: MongoDB Atlas
-- Authentication: JWT + bcrypt
-- Deployment: Vercel + Render
+## 📌 Case Study
 
-## Features
-### Ecommerce System
-- Shopping cart
-- Product management
-- Persistent cart state
-- Checkout simulation
+Full-stack influencer commerce system built to support a real business by my father, enabling coupon-based influencer marketing, commission tracking, and sales analytics.
 
-### Influencer Platform
-- Unique influencer coupon codes
-- Commission attribution system
-- Influencer rankings
-- Sales tracking
+The goal was to replace manual tracking of influencer sales with an automated, scalable system.
 
-### Analytics Dashboard
-- Revenue analytics
-- Order metrics
-- Ticket average
-- Growth indicators
-- Interactive charts
+---
 
-### Security
-- JWT authentication
-- bcrypt password hashing
-- Protected routes
-- Middleware authorization
+## 🎯 Problem
 
-### Backend Infrastructure
-- REST API architecture
-- MongoDB persistence
-- Cloud deployment
-- Real-time data integration
+The business needed a way to:
 
-## System Architecture
+- Track which influencer generated each sale
+- Manage unique coupon codes per influencer
+- Calculate commissions automatically
+- Monitor sales performance and growth
+- Replace manual spreadsheets and fragmented tracking
+
+Without a system, attribution errors and lack of visibility were common.
+
+---
+
+## 💡 Solution
+
+I built a full-stack platform that centralizes the entire influencer commerce workflow:
+
+- Ecommerce frontend for customer purchases
+- Coupon system linked to influencers
+- Commission calculation engine
+- Analytics dashboard for performance tracking
+- Secure backend API with authentication
+- Cloud deployment for scalability
+
+---
+
+## 🏗️ System Architecture
+
+```txt
 Customer
-   ↓
-Frontend Ecommerce
-   ↓
-REST API (Express.js)
-   ↓
-Coupon & Commission Engine
-   ↓
-MongoDB Atlas
-   ↓
-Influencer Analytics Dashboard
+  → Ecommerce Frontend
+      → REST API (Node.js + Express)
+          → Coupon & Commission Engine
+              → MongoDB Atlas
+                  → Influencer Analytics Dashboard
+```
 
-## Deployment
-Frontend deployed on Vercel  
-Backend deployed on Render  
-Database hosted on MongoDB Atlas
+## 🌐 Live Deployments
 
-## Screenshots
+- **Frontend (Vercel):** https://influencers-mspn.vercel.app
+- **Backend (Render):** https://influencersmspn.onrender.com
+- **Database:** MongoDB Atlas Cluster
+
+---
+
+## 🖼️ Screenshots
 
 ### Ecommerce
-
 <p align="center">
   <img src="./screenshots/ecommerce1.png" width="30%">
   <img src="./screenshots/ecommerce2.png" width="30%">
@@ -71,15 +66,13 @@ Database hosted on MongoDB Atlas
 ---
 
 ### Influencer Dashboard
-
 <p align="center">
-  <img src="./screenshots/admin.png" width="70%">
+  <img src="./screenshots/admin.png" width="80%">
 </p>
 
 ---
 
 ### Analytics
-
 <p align="center">
   <img src="./screenshots/analytics1.png" width="30%">
   <img src="./screenshots/analytics2.png" width="30%">
@@ -89,8 +82,20 @@ Database hosted on MongoDB Atlas
 ---
 
 ### Authentication
-
 <p align="center">
   <img src="./screenshots/login.png" width="45%">
   <img src="./screenshots/registro.png" width="45%">
 </p>
+
+---
+
+## 🧠 Key Learnings
+
+- Full-stack architecture design with separation of concerns
+- REST API development using Express.js
+- Authentication and security using JWT and bcrypt
+- State management for ecommerce cart persistence
+- Commission-based business logic implementation
+- Integration between frontend, backend, and cloud services
+- Deployment workflows using Vercel and Render
+- Database modeling and optimization with MongoDB Atlas
