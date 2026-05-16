@@ -95,21 +95,13 @@ The goal of the project was to build a scalable system capable of tracking influ
 
 ## System Architecture
 
-```text
-Customer
-   ↓
-Frontend Ecommerce
-   ↓
-REST API (Node.js + Express)
-   ↓
-Authentication Layer (JWT + bcrypt)
-   ↓
-Coupon & Commission Engine
-   ↓
-MongoDB Atlas
-   ↓
-Analytics Dashboard
-```
+## System Architecture
+
+<p align="center">
+  <img src="./assets/architecture.png" width="90%" />
+</p>
+
+The platform uses a full-stack architecture integrating ecommerce workflows, JWT authentication, commission attribution, analytics aggregation, and MongoDB cloud persistence through a REST API infrastructure.
 
 ---
 
