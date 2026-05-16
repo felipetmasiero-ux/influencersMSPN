@@ -1,58 +1,54 @@
-# 🚀 MSPN Influencer Commerce Platform
+# MSPN Influencer Commerce Platform
 
-## 📌 Project Background
-
-This project was built for a real business operated by my father.
-
-The company works with influencer-based sales, but everything was being tracked manually through spreadsheets and messages, which made it difficult to know:
-- which influencer generated each sale;
-- how much commission each person should receive;
-- and how the campaigns were performing overall.
-
-To solve this, I developed a full-stack platform that automates the entire coupon and commission workflow.
+Full-stack influencer-commerce platform developed for a real business, integrating ecommerce workflows, affiliate attribution, coupon-based commission tracking, analytics dashboards, and cloud deployment infrastructure.
 
 ---
 
-## 🎯 Main Goal
+## Overview
 
-The main objective was to create a system where:
+MSPN Influencer Commerce Platform is a full-stack web application created for a real family business to manage ecommerce operations and influencer partnerships in a centralized system.
 
-- each influencer has their own coupon code;
-- sales are automatically attributed;
-- commissions are calculated without manual work;
-- and the business can monitor performance through dashboards and analytics.
+The platform combines:
 
----
+- Ecommerce infrastructure
+- Influencer coupon attribution
+- Commission tracking
+- Analytics dashboards
+- Secure authentication
+- Sales performance monitoring
 
-## 💡 What I Built
-
-The platform includes:
-
-- Ecommerce frontend for customer purchases
-- Influencer coupon system
-- Automatic commission calculation
-- Analytics dashboard
-- Authentication system
-- REST API connected to MongoDB Atlas
-- Cloud deployment using Vercel and Render
+The goal of the project was to build a scalable system capable of tracking influencer-driven sales while providing analytics and operational insights through a modern dashboard interface.
 
 ---
 
-## 🛠️ Tech Stack
+## Live Deployment
 
 ### Frontend
-- React
-- Vite
-- TailwindCSS
+(Add frontend URL here)
+
+### Backend API
+(Add backend URL here)
+
+---
+
+## Tech Stack
+
+### Frontend
+- HTML
+- CSS
+- JavaScript
 
 ### Backend
 - Node.js
 - Express.js
-- JWT Authentication
-- bcrypt
 
 ### Database
 - MongoDB Atlas
+
+### Authentication & Security
+- JWT Authentication
+- bcrypt Password Hashing
+- Protected Middleware Routes
 
 ### Deployment
 - Vercel
@@ -60,92 +56,168 @@ The platform includes:
 
 ---
 
-## 🏗️ System Architecture
+## Core Features
 
-```txt
+## Ecommerce System
+- Product listing and management
+- Shopping cart system
+- Persistent cart state
+- Checkout simulation
+- Order management
+
+## Influencer Platform
+- Unique influencer coupon codes
+- Commission attribution engine
+- Influencer ranking system
+- Sales tracking by influencer
+- Revenue analytics
+
+## Analytics Dashboard
+- Revenue metrics
+- Order statistics
+- Influencer rankings
+- Ticket average calculations
+- Interactive charts and analytics
+
+## Authentication System
+- JWT-based authentication
+- Password encryption with bcrypt
+- Protected routes and middleware authorization
+- Session validation
+
+## Backend Infrastructure
+- REST API architecture
+- MongoDB persistence
+- Dynamic data aggregation
+- Cloud deployment integration
+
+---
+
+## System Architecture
+
+```text
 Customer
-  → Ecommerce Frontend
-      → REST API (Node.js + Express)
-          → Coupon & Commission Logic
-              → MongoDB Atlas
-                  → Analytics Dashboard
+   ↓
+Frontend Ecommerce
+   ↓
+REST API (Node.js + Express)
+   ↓
+Authentication Layer (JWT + bcrypt)
+   ↓
+Coupon & Commission Engine
+   ↓
+MongoDB Atlas
+   ↓
+Analytics Dashboard
 ```
 
-## ⚠️ Challenges
+---
 
-One of the biggest challenges was making sure coupon attribution remained consistent during the checkout flow.
+## Engineering Challenges
 
-I also had to prevent duplicated commissions and invalid coupon usage while keeping the logic simple enough to maintain.
+### Commission Attribution Logic
+Designed a commission attribution system capable of associating completed purchases with influencer coupon codes while preventing duplicated commission events.
 
-Another important part was connecting the frontend, backend, authentication, and database into a workflow that behaved like a real production application instead of just a demo project.
+### Authentication & Authorization
+Implemented stateless JWT authentication with protected middleware routes and bcrypt password hashing for secure user management.
+
+### Persistent Shopping Cart
+Built cart persistence logic capable of synchronizing frontend cart state with backend records across sessions and browser refreshes.
+
+### Analytics Aggregation
+Developed backend aggregation logic for calculating rankings, revenue metrics, commissions, and influencer performance dynamically from database records.
+
+### Frontend & Backend Synchronization
+Handled real-time synchronization between ecommerce interactions and dashboard analytics updates.
 
 ---
 
-## 🌐 Live Deployments
+## Security
 
-- Frontend: https://influencers-mspn.vercel.app
-- Backend API: https://influencersmspn.onrender.com
-
----
-
-## 🖼️ Screenshots
-
-### Ecommerce
-
-<p align="center">
-  <img src="./screenshots/ecommerce1.png" width="30%">
-  <img src="./screenshots/ecommerce2.png" width="30%">
-  <img src="./screenshots/ecommerce3.png" width="30%">
-</p>
+- JWT authentication
+- bcrypt password hashing
+- Protected middleware routes
+- Authorization-based access control
+- Secure API endpoint validation
 
 ---
 
-### Admin Dashboard
+## Scalability Considerations
 
-<p align="center">
-  <img src="./screenshots/admin.png" width="80%">
-</p>
+The platform was designed using stateless REST APIs and cloud-hosted MongoDB infrastructure, enabling scalable backend architecture and independent frontend/backend deployment.
 
----
-
-### Analytics
-
-<p align="center">
-  <img src="./screenshots/analytics1.png" width="30%">
-  <img src="./screenshots/analytics2.png" width="30%">
-  <img src="./screenshots/analytics3.png" width="30%">
-</p>
+The modular structure also allows future integration of:
+- Payment gateways
+- Real-time analytics
+- AI recommendation systems
+- Fraud detection systems
+- Advanced affiliate attribution
 
 ---
 
-### Authentication
+## Project Structure
 
-<p align="center">
-  <img src="./screenshots/login.png" width="45%">
-  <img src="./screenshots/registro.png" width="45%">
-</p>
-
----
-
-## 🧠 What I Learned
-
-Through this project I improved my understanding of:
-
-- Full-stack application architecture
-- REST API development
-- Authentication and authorization using JWT
-- MongoDB data modeling
-- Ecommerce state management
-- Business logic implementation
-- Deployment workflows
-- Integration between frontend and backend services
+```text
+/frontend
+/backend
+/docs
+```
 
 ---
 
-## 📌 Final Notes
+## Screenshots
 
-This project was especially important to me because it was built around a real business problem instead of a tutorial scenario.
+## Ecommerce Interface
+(Add screenshot here)
 
-Working on something that would actually be used helped me think more carefully about usability, reliability, and maintainability.
+## Influencer Dashboard
+(Add screenshot here)
 
-This experience showed me how software can solve practical business problems and motivated me to keep building technology with real-world impact.
+## Analytics System
+(Add screenshot here)
+
+## Authentication System
+(Add screenshot here)
+
+---
+
+## Future Improvements
+
+- Stripe payment integration
+- Real-time analytics with Socket.IO
+- AI-based influencer recommendation system
+- Fraud detection for coupon abuse
+- Advanced analytics dashboards
+- Email notification system
+- Automated commission payouts
+
+---
+
+## What I Learned
+
+Through this project, I gained practical experience in:
+
+- Full-stack web development
+- REST API architecture
+- Authentication systems
+- Database modeling
+- Cloud deployment
+- Backend engineering
+- Analytics aggregation
+- System design
+- Business-oriented software development
+
+---
+
+## Motivation
+
+This platform was developed to solve a real operational problem for a family business, improving influencer sales attribution and commission management while creating a scalable ecommerce infrastructure.
+
+---
+
+## Author
+
+Felipe Teixeira Masiero
+
+GitHub:
+https://github.com/felipetmasiero-ux
