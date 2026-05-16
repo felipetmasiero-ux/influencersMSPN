@@ -100,7 +100,7 @@ Another important part was connecting the frontend, backend, authentication, and
 
 ---
 
-### Influencer Dashboard
+### Admin Dashboard
 
 <p align="center">
   <img src="./screenshots/admin.png" width="80%">
