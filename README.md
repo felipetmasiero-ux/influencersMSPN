@@ -21,6 +21,14 @@ The goal of the project was to build a scalable system capable of tracking influ
 
 ---
 
+## Demo
+
+<p align="center">
+  <img src="./assets/videositeMSPN.mp4" width="90%" />
+</p>
+
+---
+
 ## Live Deployment
 
 ### Frontend
