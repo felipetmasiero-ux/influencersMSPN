@@ -24,7 +24,7 @@ The goal of the project was to build a scalable system capable of tracking influ
 ## Demo
 
 <p align="center">
-  <img src="./assets/videositeMSPN.mp4" width="90%" />
+  <img src="./assets/videositeMSPN.gif" width="90%" />
 </p>
 
 ---
@@ -32,10 +32,10 @@ The goal of the project was to build a scalable system capable of tracking influ
 ## Live Deployment
 
 ### Frontend
-(Add frontend URL here)
+https://influencers-mspn.vercel.app/
 
 ### Backend API
-(Add backend URL here)
+https://influencersmspn.onrender.com
 
 ---
 
@@ -100,8 +100,6 @@ The goal of the project was to build a scalable system capable of tracking influ
 - Cloud deployment integration
 
 ---
-
-## System Architecture
 
 ## System Architecture
 
