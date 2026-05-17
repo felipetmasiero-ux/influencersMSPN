@@ -373,6 +373,19 @@ async function carregarAnalytics() {
             </div>
             `
         })
+
+        document.getElementById("addToCart")
+        .innerHTML = dados.addToCart
+
+         document.getElementById("couponUses")
+        .innerHTML = dados.couponUses
+
+        document.getElementById("purchases")
+        .innerHTML = dados.purchases
+
+         document.getElementById("conversionRate")
+        .innerHTML =
+        `${dados.conversionRate.toFixed(1)}%`
 }
 
 window.onclick = function(event) {

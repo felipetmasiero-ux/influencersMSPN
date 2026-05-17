@@ -354,3 +354,15 @@ td img {
 .toast.show {
     transform: translateX(0);
 }
+
+.analytics-funnel {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(auto-fit, minmax(220px, 1fr));
+
+    gap: 20px;
+
+    margin-top: 30px;
+}

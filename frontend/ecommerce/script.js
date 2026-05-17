@@ -3,11 +3,17 @@ let codigoInput = document.getElementById("codigo-digitado")
 let divCodigo = document.getElementById("codigo")
 let cupomAtivo = JSON.parse(localStorage.getItem("cupom")) || null
 
+const token =
+    localStorage.getItem("token")
+
+if (!token) {
+
+    window.location.href =
+        "../login/login.html"
+}
+
 const params = new URLSearchParams(window.location.search)
 const ref = params.get("ref")
-
-const userId = localStorage.getItem("userId") || crypto.randomUUID()
-localStorage.setItem("userId", userId)
 
 if (ref) {
     codigoInput.value = ref
@@ -36,7 +42,7 @@ async function enviar(produtoId, elemento) {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
-            "x-user-id": userId
+            Authorization: `Bearer ${token}`
         },
         body: JSON.stringify({ id: produtoId })
     })
@@ -114,7 +120,7 @@ async function atualizarCarrinho() {
     const responseCarrinho = await fetch("https://influencersmspn.onrender.com/carrinho", {
         headers: { 
         "Content-Type": "application/json",
-        "x-user-id": userId 
+        Authorization: `Bearer ${token}`
 }    })
 
     const carrinho = await responseCarrinho.json()
@@ -172,7 +178,7 @@ async function atualizarCarrinho() {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
-                 "x-user-id": userId
+                 Authorization: `Bearer ${token}`
             }, 
             body: JSON.stringify({
                 codigo: cupomAtivo?.codigo
@@ -210,7 +216,7 @@ async function removerItem(id) {
     method: "DELETE",
     headers: { 
                 "Content-Type": "application/json",        
-                "x-user-id": userId },
+                Authorization: `Bearer ${token}` },
 })
     atualizarCarrinho()
 }
@@ -221,7 +227,7 @@ async function removerItem(id) {
     method: "PATCH",
     headers: {  
                 "Content-Type": "application/json",
-                "x-user-id": userId },
+                Authorization: `Bearer ${token}` },
     body: JSON.stringify({ acao: "aumentar" })
 })
     atualizarCarrinho()
@@ -233,7 +239,7 @@ async function removerItem(id) {
     method: "PATCH",
     headers: {  
                 "Content-Type": "application/json",
-                "x-user-id": userId },
+                Authorization: `Bearer ${token}` },
     body: JSON.stringify({ acao: "diminuir" })
 })
     atualizarCarrinho()
@@ -253,7 +259,7 @@ async function finalizarCompra() {
             method: "POST",
             headers: { 
                         "Content-Type": "application/json",
-                         "x-user-id": userId  },
+                        Authorization: `Bearer ${token}`},
             body: JSON.stringify({
                 codigo: cupomAtivo?.codigo
             })

@@ -2,6 +2,8 @@ const mongoose = require("mongoose")
 
 const pedidoSchema = new mongoose.Schema({
 
+    userId: String,
+
     codigo: String,
 
     cliente: String,
@@ -19,12 +21,11 @@ const pedidoSchema = new mongoose.Schema({
     status: {
         type: String,
         default: "Aprovado"
-    },
-
-    data: {
-        type: Date,
-        default: Date.now
     }
+
+},
+{
+    timestamps: true
 })
 
 module.exports = mongoose.model("Pedido", pedidoSchema)

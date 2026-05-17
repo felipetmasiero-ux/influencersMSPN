@@ -5,6 +5,10 @@ const cors = require("cors")
 const app = express()
 const jwt = require("jsonwebtoken")
 const bcrypt = require("bcryptjs")
+const {
+    registroSchema,
+    loginSchema
+} = require("./validation/authValidation")
 
 
 
@@ -17,6 +21,8 @@ const Usuario = require("./models/Usuario")
 const Pedido = require("./models/Pedido")
 const Venda = require("./database")
 const Produto = require("./models/Produto")
+const Evento = require("./models/Evento")
+const registrarEvento = require("./registrarEvento")
 
 const multer = require("multer")
 const cloudinary = require("./config/cloudinary")
@@ -28,10 +34,16 @@ const upload = multer({
 })
 
 app.use(cors({
-    origin: "*"
+    origin: [
+        "https://influencers-mspn.vercel.app",
+        "http://127.0.0.1:5500",
+        "http://localhost:5500"
+    ],
+    credentials: true
 }))
 app.use(express.json())
-let carrinhos = {}
+
+const Carrinho = require("./models/Carrinho")
 
 let cupons = [
     {codigo:"FELIPE10", desconto: 10},
@@ -95,23 +107,39 @@ app.get("/", (req, res) => {
   res.send("Servidor funcionando 🚀")
 })
 
-app.get("/carrinho", (req, res) => {
-  const userId = req.headers["x-user-id"] || "guest"
+app.get("/carrinho", autenticar, async (req, res) => {
 
-  if(!carrinhos[userId]) {
-    carrinhos[userId] = []
-  }
-  res.json(carrinhos[userId])
-})
+    const userId = req.usuario.id
 
-app.post("/carrinho", async (req, res) => {
-  const userId = req.headers["x-user-id"] || "guest"
+    let carrinho =
+        await Carrinho.findOne({ userId })
 
-  if (!carrinhos[userId]) {
-        carrinhos[userId] = []
+    if (!carrinho) {
+
+        carrinho =
+            await Carrinho.create({
+                userId,
+                produtos: []
+            })
     }
 
-  let carrinho = carrinhos[userId]
+    res.json(carrinho.produtos)
+})
+
+app.post("/carrinho", autenticar, async (req, res) => {
+    const userId = req.usuario.id
+
+    let carrinho =
+    await Carrinho.findOne({ userId })
+
+    if (!carrinho) {
+
+        carrinho =
+            await Carrinho.create({
+                userId,
+                produtos: []
+            })
+    }
 
   const { id } = req.body
 
@@ -122,78 +150,116 @@ app.post("/carrinho", async (req, res) => {
     return res.status(400).json({ erro:"Produto inválido" })
   }
 
- let item = carrinho.find(p => p.id.toString() === id.toString())
+  let item = carrinho.produtos.find(p => p.id.toString() === id.toString())
 
   if (item) {
     item.quantidade++
-  } else {carrinho.push({
+  } else { carrinho.produtos.push({
     id: produto._id.toString(),
     nome: produto.nome,
     preco: Number(produto.preco),
     imagem: produto.imagem,
     quantidade: 1
-})
-}
+    })
+    }
 
-  res.json(carrinho)
+    await registrarEvento({
+
+    type: "ADD_TO_CART",
+
+    influencer: null,
+
+    productId: produto.id
+    })
+
+  await carrinho.save()
+
+  res.json(carrinho.produtos)
 })
 
-app.patch("/carrinho/:id", (req, res) => {
-    const userId = req.headers["x-user-id"] || "guest"
-    let carrinho = carrinhos[userId] || []
+app.patch("/carrinho/:id", autenticar, async (req, res) => {
+
+    const userId = req.usuario.id
+
+    const carrinho =
+        await Carrinho.findOne({ userId })
+
+    if (!carrinho) {
+        return res.status(404).json({
+            erro: "Carrinho não encontrado"
+        })
+    }
 
     const { id } = req.params
     const { acao } = req.body
 
-    // encontra o item
-    let item = carrinho.find(
-        p => p.id.toString() === id.toString()
-    )
+    let item =
+        carrinho.produtos.find(
+            p => p.id.toString() === id.toString()
+        )
 
     if (!item) {
-        return res.status(400).json({ erro:"Item não encontrado" })
+        return res.status(400).json({
+            erro: "Item não encontrado"
+        })
     }
 
-    // aumenta
     if (acao === "aumentar") {
         item.quantidade++
     }
 
-    // diminui
     if (acao === "diminuir") {
         item.quantidade--
     }
 
-    // remove se chegar em 0
-    if (item.quantidade <= 0) {
-
-        carrinhos[userId] = carrinho.filter(
-            p => p.id.toString() !== id.toString()
+    carrinho.produtos =
+        carrinho.produtos.filter(
+            p => p.quantidade > 0
         )
-    }
 
-    res.json(carrinho)
+    await carrinho.save()
+
+    res.json(carrinho.produtos)
 })
 
-app.delete("/carrinho/:id", (req, res) => {
-    const userId = req.headers["x-user-id"] || "guest"
-    let carrinho = carrinhos[userId] || []
+app.delete("/carrinho/:id", autenticar, async (req, res) => {
+
+    const userId = req.usuario.id
+
+    const carrinho =
+        await Carrinho.findOne({ userId })
+
+    if (!carrinho) {
+        return res.status(404).json({
+            erro: "Carrinho não encontrado"
+        })
+    }
 
     const { id } = req.params
 
-    carrinhos[userId] = carrinho.filter(
-    p => p.id.toString() !== id.toString()
-)
+    carrinho.produtos =
+        carrinho.produtos.filter(
+            p => p.id.toString() !== id.toString()
+        )
 
-    res.json(carrinhos[userId])
+    await carrinho.save()
+
+    res.json(carrinho.produtos)
 })
 
-app.post("/cupom", (req, res) => {
+app.post("/cupom", async (req, res) => {
     const codigo = req.body.codigo?.trim().toUpperCase()
     const cupom = cupons.find(c => c.codigo === codigo)
     if (!cupom) {
         return res.status(404).json({ erro: "Cupom inválido"})
     }
+
+    await registrarEvento({
+
+    type: "APPLY_COUPON",
+
+    influencer: cupom.codigo
+    })
 
     res.json(cupom)
     })
@@ -225,27 +291,48 @@ function calcularResumo(carrinho, codigo) {
 }
 
 // /resumo usa a função
-app.post("/resumo", (req, res) => {
-    const userId = req.headers["x-user-id"] || "guest"
-    let carrinho = carrinhos[userId] || []
+app.post("/resumo", autenticar, async (req, res) => {
+
+    const userId = req.usuario.id
+
+    const carrinho =
+        await Carrinho.findOne({ userId })
+
+    const produtos =
+        carrinho?.produtos || []
 
     const { codigo } = req.body
-    res.json(calcularResumo(carrinho, codigo))
+
+    res.json(
+        calcularResumo(produtos, codigo)
+    )
 })
 
 // /finalizar também usa a mesma função
-app.post("/finalizar", async (req, res) => {
+app.post("/finalizar", autenticar, async (req, res) => {
     try {
+        const usuario =
+            await Usuario.findById(req.usuario.id)
+
+        if (!usuario) {
+            return res.status(404).json({
+                erro: "Usuário não encontrado"
+            })
+        }
         const { codigo } = req.body
 
-        const userId = req.headers["x-user-id"] || "guest"
-        let carrinho = carrinhos[userId] || []
+        const userId = req.usuario.id
+        const carrinho =
+             await Carrinho.findOne({ userId })
 
-        if (carrinho.length === 0) {
+        const produtos =
+            carrinho?.produtos || []
+
+        if (produtos.length === 0) {
             return res.status(400).json({ erro: "Carrinho vazio" })
         }
 
-        const resumo = calcularResumo(carrinho, codigo)
+        const resumo = calcularResumo(produtos, codigo)
 
     if (resumo.cupom) {
         let venda = await Venda.findOne({ codigo: resumo.cupom });
@@ -271,27 +358,44 @@ app.post("/finalizar", async (req, res) => {
     data: new Date()
     })
 
+    
+
     let comissaoCalculada = resumo.totalFinal * TAXA_COMISSAO;
 
     venda.comissao = (venda.comissao || 0) + comissaoCalculada;
 
     await venda.save();
-}
+    }
 
-    await Pedido.create({
+    const pedido = await Pedido.create({
+
+    userId: req.usuario.id,
 
     codigo: resumo.cupom,
 
-    cliente: "Cliente",
+    cliente: usuario.email,
 
-    produtos: carrinho,
+    produtos: produtos,
 
     total: resumo.totalFinal,
 
     status: "Aprovado"
 })
 
-    carrinhos[userId] = []
+    await registrarEvento({
+
+        type: "PURCHASE",
+
+        influencer: resumo.cupom || null,
+
+        value: resumo.totalFinal,
+
+        orderId: pedido._id
+    })
+
+    carrinho.produtos = []
+
+    await carrinho.save()
     
     res.json({ mensagem: "Compra finalizada!", ...resumo })
 
@@ -373,16 +477,32 @@ app.get(
 
     async (req, res) => {
 
-     const codigo = req.usuario.codigo
-
-    const pedidos = await Pedido.find({ codigo })
+    const pedidos =
+        await Pedido.find({
+            userId: req.usuario.id
+        })
 
     res.json(pedidos)
 })
 
 app.post("/registro", async (req, res) => {
 
-    const { nome, email, senha, codigo } = req.body
+    const validacao =
+    registroSchema.safeParse(req.body)
+
+    if (!validacao.success) {
+
+        return res.status(400).json({
+            erro: validacao.error.errors[0].message
+        })
+    }
+
+    const {
+        nome,
+        email,
+        senha,
+        codigo
+    } = validacao.data
 
     const usuarioExiste =
         await Usuario.findOne({ email })
@@ -398,13 +518,16 @@ app.post("/registro", async (req, res) => {
 
     const usuario = await Usuario.create({
 
-        nome,
-        email,
+    nome,
 
-        senha: senhaHash,
+    email,
 
-        codigo
-    })
+    senha: senhaHash,
+
+    codigo,
+
+    role: "user"
+})
 
     res.json({
         mensagem: "Usuário criado"
@@ -413,7 +536,20 @@ app.post("/registro", async (req, res) => {
 
 app.post("/login", async (req, res) => {
 
-    const { email, senha } = req.body
+    const validacao =
+    loginSchema.safeParse(req.body)
+
+    if (!validacao.success) {
+
+        return res.status(400).json({
+            erro: validacao.error.errors[0].message
+        })
+    }
+
+    const {
+        email,
+        senha
+    } = validacao.data
 
     const usuario =
         await Usuario.findOne({ email })
@@ -436,12 +572,13 @@ app.post("/login", async (req, res) => {
         })
     }
 
-    const token = jwt.sign(
-{
+    const token = jwt.sign({
     id: usuario._id,
+    nome: usuario.nome,
+    email: usuario.email,
     codigo: usuario.codigo,
     role: usuario.role
-},
+    },
 
 process.env.JWT_SECRET,
 
@@ -586,6 +723,28 @@ app.get(
                     ? faturamento / totalPedidos
                     : 0
 
+            const addToCart =
+                await Evento.countDocuments({
+                    type: "ADD_TO_CART"
+                })
+
+            const couponUses =
+                await Evento.countDocuments({
+                    type: "APPLY_COUPON"
+                })
+
+            const purchases =
+                await Evento.countDocuments({
+                    type: "PURCHASE"
+                })
+            
+            const conversionRate =
+                addToCart > 0
+
+                ? ((purchases / addToCart) * 100)
+
+                : 0
+
             res.json({
 
             faturamento,    
@@ -596,8 +755,16 @@ app.get(
 
             ticketMedio,
 
-            topProdutos
-            })
+            topProdutos,
+
+            addToCart,
+
+            couponUses,
+
+            purchases,
+
+            conversionRate
+                        })
 
         } catch (erro) {
 
