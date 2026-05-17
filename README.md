@@ -1,23 +1,23 @@
 # MSPN Influencer Commerce Platform
 
-Full-stack influencer-commerce platform developed for a real business, integrating ecommerce workflows, affiliate attribution, coupon-based commission tracking, analytics dashboards, and cloud deployment infrastructure.
+Full-stack influencer-commerce platform developed for a real business, integrating ecommerce operations, influencer attribution systems, commission tracking, analytics dashboards, secure authentication, and cloud deployment infrastructure.
 
 ---
 
 ## Overview
 
-MSPN Influencer Commerce Platform is a full-stack web application created for a real family business to manage ecommerce operations and influencer partnerships in a centralized system.
+MSPN Influencer Commerce Platform is a full-stack web application created to centralize ecommerce management and influencer partnerships for a real family business.
 
-The platform combines:
+The platform was designed to solve operational problems involving:
 
-- Ecommerce infrastructure
 - Influencer coupon attribution
 - Commission tracking
-- Analytics dashboards
-- Secure authentication
-- Sales performance monitoring
+- Order persistence
+- Ecommerce workflows
+- Sales analytics
+- Administrative product management
 
-The goal of the project was to build a scalable system capable of tracking influencer-driven sales while providing analytics and operational insights through a modern dashboard interface.
+The system combines a complete ecommerce workflow with an influencer performance infrastructure, allowing sales attribution, commission monitoring, analytics aggregation, and operational management through a centralized dashboard.
 
 ---
 
@@ -49,14 +49,21 @@ https://influencersmspn.onrender.com
 ### Backend
 - Node.js
 - Express.js
+- REST API Architecture
 
 ### Database
 - MongoDB Atlas
+- Mongoose ODM
 
 ### Authentication & Security
 - JWT Authentication
 - bcrypt Password Hashing
 - Protected Middleware Routes
+- Request Validation with Zod
+
+### Media & Upload Infrastructure
+- Multer
+- Cloudinary
 
 ### Deployment
 - Vercel
@@ -67,37 +74,56 @@ https://influencersmspn.onrender.com
 ## Core Features
 
 ## Ecommerce System
-- Product listing and management
-- Shopping cart system
-- Persistent cart state
-- Checkout simulation
-- Order management
+- Product listing system
+- Persistent shopping cart
+- Dynamic quantity management
+- Coupon-based checkout
+- Persistent order processing
+- Order history tracking
 
 ## Influencer Platform
 - Unique influencer coupon codes
-- Commission attribution engine
-- Influencer ranking system
-- Sales tracking by influencer
-- Revenue analytics
+- Automated commission attribution
+- Influencer revenue tracking
+- Sales ranking system
+- Commission calculation engine
+- Performance monitoring
 
 ## Analytics Dashboard
-- Revenue metrics
+- Revenue analytics
 - Order statistics
+- Conversion tracking
+- Ticket average calculation
 - Influencer rankings
-- Ticket average calculations
-- Interactive charts and analytics
+- Product performance analytics
+- Interactive charts and metrics
 
 ## Authentication System
 - JWT-based authentication
+- Stateless session management
 - Password encryption with bcrypt
-- Protected routes and middleware authorization
-- Session validation
+- Middleware authorization
+- Protected admin routes
+- Request validation layer
 
-## Backend Infrastructure
-- REST API architecture
-- MongoDB persistence
-- Dynamic data aggregation
-- Cloud deployment integration
+## Admin Infrastructure
+- Product CRUD operations
+- Product image upload system
+- Analytics aggregation
+- Sales monitoring
+- Administrative dashboards
+
+---
+
+## Backend Architecture
+
+- RESTful API structure
+- Middleware-based authentication
+- MongoDB document modeling
+- JWT session management
+- Event tracking architecture
+- Analytics aggregation services
+- Cloud image upload pipeline
 
 ---
 
@@ -107,49 +133,60 @@ https://influencersmspn.onrender.com
   <img src="./assets/architecture.png" width="90%" />
 </p>
 
-The platform uses a full-stack architecture integrating ecommerce workflows, JWT authentication, commission attribution, analytics aggregation, and MongoDB cloud persistence through a REST API infrastructure.
+The platform uses a modular full-stack architecture integrating ecommerce workflows, influencer attribution, analytics aggregation, JWT authentication, MongoDB persistence, and cloud deployment infrastructure through a REST API backend.
 
 ---
 
 ## Engineering Challenges
 
-### Commission Attribution Logic
-Designed a commission attribution system capable of associating completed purchases with influencer coupon codes while preventing duplicated commission events.
-
-### Authentication & Authorization
-Implemented stateless JWT authentication with protected middleware routes and bcrypt password hashing for secure user management.
+### Influencer Attribution Logic
+Designed a commission attribution system capable of associating purchases with influencer coupon codes while preventing duplicated commission events and maintaining analytics consistency.
 
 ### Persistent Shopping Cart
-Built cart persistence logic capable of synchronizing frontend cart state with backend records across sessions and browser refreshes.
+Implemented persistent cart synchronization between frontend state and backend database records across sessions and page refreshes.
 
 ### Analytics Aggregation
-Developed backend aggregation logic for calculating rankings, revenue metrics, commissions, and influencer performance dynamically from database records.
+Developed backend aggregation logic responsible for dynamically calculating:
+- Revenue
+- Ticket averages
+- Conversion rates
+- Product rankings
+- Influencer performance metrics
+
+### Authentication & Authorization
+Implemented stateless JWT authentication with middleware-based route protection and role-based authorization for admin operations.
+
+### Media Upload Infrastructure
+Built an image upload pipeline integrating Multer memory storage with Cloudinary cloud hosting for product management.
 
 ### Frontend & Backend Synchronization
-Handled real-time synchronization between ecommerce interactions and dashboard analytics updates.
+Handled synchronization between ecommerce interactions, analytics tracking, order persistence, and dashboard updates.
 
 ---
 
-## Security
+## Security & Validation
 
-- JWT authentication
-- bcrypt password hashing
+- JWT stateless authentication
+- Password hashing with bcrypt
 - Protected middleware routes
-- Authorization-based access control
-- Secure API endpoint validation
+- Request validation with Zod
+- Admin authorization layer
+- Secure environment variable management
+- Protected API endpoints
 
 ---
 
 ## Scalability Considerations
 
-The platform was designed using stateless REST APIs and cloud-hosted MongoDB infrastructure, enabling scalable backend architecture and independent frontend/backend deployment.
+The platform was designed using stateless REST APIs and cloud-hosted MongoDB infrastructure, allowing independent frontend/backend deployment and scalable backend architecture.
 
-The modular structure also allows future integration of:
+The modular backend structure also enables future integration of:
 - Payment gateways
 - Real-time analytics
-- AI recommendation systems
-- Fraud detection systems
-- Advanced affiliate attribution
+- Email notification systems
+- Advanced reporting systems
+- Automated commission payouts
+- Fraud prevention systems
 
 ---
 
@@ -165,7 +202,7 @@ The modular structure also allows future integration of:
   <img src="./assets/ecommerce3.png" width="32%" />
 </p>
 
-The ecommerce system includes product browsing, shopping cart functionality, persistent cart state, and coupon-based checkout integration.
+The ecommerce interface includes persistent shopping cart functionality, dynamic quantity management, coupon application, and order processing workflows integrated with backend persistence.
 
 ---
 
@@ -181,7 +218,7 @@ The ecommerce system includes product browsing, shopping cart functionality, per
   <img src="./assets/analytics3.png" width="48%" />
 </p>
 
-The dashboard provides influencer rankings, commission tracking, revenue analytics, order metrics, and interactive data visualizations.
+The analytics dashboard provides commission tracking, influencer rankings, revenue monitoring, conversion analytics, product performance metrics, and aggregated business insights.
 
 ---
 
@@ -192,7 +229,7 @@ The dashboard provides influencer rankings, commission tracking, revenue analyti
   <img src="./assets/registro.png" width="48%" />
 </p>
 
-Authentication is implemented using JWT-based stateless authorization with bcrypt password hashing and protected middleware routes.
+Authentication is implemented using JWT-based stateless authorization, bcrypt password hashing, middleware route protection, and request validation with Zod.
 
 ---
 
@@ -200,11 +237,12 @@ Authentication is implemented using JWT-based stateless authorization with bcryp
 
 - Stripe payment integration
 - Real-time analytics with Socket.IO
-- AI-based influencer recommendation system
-- Fraud detection for coupon abuse
+- Automated email notifications
 - Advanced analytics dashboards
-- Email notification system
+- Multi-role administrative system
 - Automated commission payouts
+- Refresh token authentication
+- Fraud prevention mechanisms
 
 ---
 
@@ -213,20 +251,23 @@ Authentication is implemented using JWT-based stateless authorization with bcryp
 Through this project, I gained practical experience in:
 
 - Full-stack web development
-- REST API architecture
+- Backend architecture design
+- REST API engineering
 - Authentication systems
-- Database modeling
-- Cloud deployment
-- Backend engineering
+- Middleware patterns
+- MongoDB schema modeling
 - Analytics aggregation
-- System design
+- Cloud deployment infrastructure
+- Secure session management
+- File upload pipelines
 - Business-oriented software development
+- Ecommerce workflow engineering
 
 ---
 
 ## Motivation
 
-This platform was developed to solve a real operational problem for a family business, improving influencer sales attribution and commission management while creating a scalable ecommerce infrastructure.
+This platform was developed to solve real operational challenges for a family business by improving influencer sales attribution, commission management, ecommerce organization, and analytics visibility through a scalable full-stack infrastructure.
 
 ---
 
