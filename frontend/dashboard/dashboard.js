@@ -274,7 +274,7 @@ async function carregarPedidos() {
         </td>
 
         <td>
-            ${new Date(pedido.data)
+            ${new Date(pedido.createdAt)
                 .toLocaleDateString("pt-BR")}
         </td>
 
