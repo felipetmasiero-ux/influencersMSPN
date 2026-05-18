@@ -24,7 +24,7 @@ The system combines a complete ecommerce workflow with an influencer performance
 ## Demo
 
 <p align="center">
-  <img src="./assets/videositeMSPN.gif" width="90%" />
+  <img src="./assets/videositeMSPN (1).gif" width="90%" />
 </p>
 
 ---
