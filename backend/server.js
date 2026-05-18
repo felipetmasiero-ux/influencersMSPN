@@ -676,16 +676,17 @@ app.get(
 
             pedidos.forEach(pedido => {
 
-               pedido.produtos.forEach(produto => {
+                if (!pedido.produtos) return
 
-        if (!produtosMap[produto.nome]) {
+                pedido.produtos.forEach(produto => {
 
-            produtosMap[produto.nome] = 0
-        }
+                    if (!produtosMap[produto.nome]) {
+                        produtosMap[produto.nome] = 0
+                    }
 
-        produtosMap[produto.nome] +=
-            produto.quantidade
-              })
+                    produtosMap[produto.nome] +=
+                        produto.quantidade || 0
+                })
             })
 
             const topProdutos =

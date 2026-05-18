@@ -375,17 +375,17 @@ async function carregarAnalytics() {
         })
 
         document.getElementById("addToCart")
-        .innerHTML = dados.addToCart
+        .innerHTML = dados.addToCart || 0
 
-         document.getElementById("couponUses")
-        .innerHTML = dados.couponUses
+        document.getElementById("couponUses")
+        .innerHTML = dados.couponUses || 0
 
         document.getElementById("purchases")
-        .innerHTML = dados.purchases
+        .innerHTML = dados.purchases || 0
 
          document.getElementById("conversionRate")
         .innerHTML =
-        `${dados.conversionRate.toFixed(1)}%`
+        `${(dados.conversionRate || 0).toFixed(1)}%`
 }
 
 window.onclick = function(event) {
