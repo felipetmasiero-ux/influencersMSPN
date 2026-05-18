@@ -8,23 +8,19 @@ const pedidoSchema = new mongoose.Schema({
 
     cliente: String,
 
-    produtos: [
-        {
-            nome: String,
-            preco: Number,
-            quantidade: Number
-        }
-    ],
+    produtos: Array,
 
     total: Number,
 
-    status: {
-        type: String,
-        default: "Aprovado"
-    }
+    status: String,
 
-},
-{
+    influencer: {
+    type: String,
+    default: null
+}
+
+}, {
+
     timestamps: true
 })
 
